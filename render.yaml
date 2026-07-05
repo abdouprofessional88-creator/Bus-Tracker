@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: bus-tracking
+    env: node
+    plan: free
+    buildCommand: cd client && npm install && npm run build && cd ../server && npm install
+    startCommand: cd server && node server.js
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: USE_JSON_DB
+        value: "true"
+      - key: PORT
+        value: 10000
